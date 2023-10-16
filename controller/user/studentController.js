@@ -8,7 +8,7 @@ module.exports = {
     res.send(data);
   },
   createStudent: async (req, res) => {
-    const { fistname, lastname, email, phoneNumber, ...Student } = req.body;
+    const { firstname, lastname, email, phoneNumber, ...Student } = req.body;
     // console.log({
     //   firstname: fistname,
     //   lastname: lastname,
@@ -16,7 +16,7 @@ module.exports = {
     //   phoneNumber: phoneNumber,
     // });
     const creteUser = await userController.createUserhelper({
-      firstname: fistname,
+      firstname: firstname,
       lastname: lastname,
       email: email,
       phoneNumber: phoneNumber,
