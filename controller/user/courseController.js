@@ -10,8 +10,4 @@ module.exports = {
     const data = await courseService.createCourse(req.body);
     res.send(data);
   },
-  createCoursehelper: async (data) => {
-    const coursedata = await courseService.createCourse(data);
-    return coursedata;
-  },
 };

@@ -22,24 +22,38 @@ teacher.belongsTo(user, {
   foreignKey: { name: "userId", allowNull: false, unique: true },
 });
 
-course.hasMany(teacher, {
+// course.hasMany(teacher, {
+//   onDelete: "CASCADE",
+//   foreignKey: {
+//     name: "courseId",
+//     allowNull: false,
+//     unique: false,
+//     autoIncrement: true,
+//   },
+// });
+// teacher.belongsTo(course, {
+//   onDelete: "CASCADE",
+//   foreignKey: {
+//     name: "courseId",
+//     allowNull: false,
+//     unique: false,
+//     autoIncrement: true,
+//   },
+// });
+teacher.belongsToMany(course, {
   onDelete: "CASCADE",
-  foreignKey: {
-    name: "courseId",
-    allowNull: false,
-    unique: true,
-    autoIncrement: true,
-  },
+  through: "TeacherCourse",
+  as: "Course",
+  foreignKey: { name: "teacherID", allowNull: false },
 });
-teacher.belongsTo(course, {
+
+course.belongsToMany(teacher, {
   onDelete: "CASCADE",
-  foreignKey: {
-    name: "courseId",
-    allowNull: false,
-    unique: true,
-    autoIncrement: true,
-  },
+  through: "TeacherCourse",
+  as: "Teacher",
+  foreignKey: { name: "courseID", allowNull: false },
 });
+
 
 const models = sequelize.models;
 console.log(models);

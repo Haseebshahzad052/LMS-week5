@@ -2,6 +2,8 @@ var express = require("express");
 const userController = require("../controller/user/userController");
 const studentController = require("../controller/user/studentController");
 
+const courseController = require('../controller/user/courseController');
+const courseTeacherController = require('../controller/user/courseTeacherController');
 const teacherController = require("../controller/user/teacherController");
 var router = express.Router();
 
@@ -15,5 +17,11 @@ router.post("/createStudent", studentController.createStudent);
 
 router.get("/teacher", teacherController.getTeacher);
 router.post("/createTeacher", teacherController.createTeacher);
+
+router.get('/course',courseController.getCourse)
+router.post('/createCourse',courseController.createCourse);
+
+
+router.post("/course_teacher", courseTeacherController.createCourseTeacher);
 
 module.exports = router;

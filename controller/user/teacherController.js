@@ -9,7 +9,7 @@ module.exports = {
     res.send(data);
   },
   createTeacher: async (req, res) => {
-    const { firstname, lastname, email, phoneNumber, coursename, courseCreditHours, ...Teacher } = req.body;
+    const { firstname, lastname, email, phoneNumber, ...Teacher } = req.body;
     // console.log({
     //   firstname: fistname,
     //   lastname: lastname,
@@ -22,11 +22,7 @@ module.exports = {
       email: email,
       phoneNumber: phoneNumber,
     });
-    const creteCourse = await courseController.createCoursehelper({
-        
-        coursename: coursename,
-        courseCreditHours: courseCreditHours,
-      });
+
     const createTeacher = await teacherService.createTeacher({
       userId: creteUser.id,
       scale: Teacher.scale,
